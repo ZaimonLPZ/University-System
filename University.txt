@@ -1,0 +1,4 @@
+:- dynamic student/3.
+
+student(1007, 540, 550).
+
