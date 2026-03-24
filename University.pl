@@ -1,10 +1,10 @@
 :- dynamic student/3.
 
 load_students :-
-    consult('C:/Users/alexandra/Desktop/University pl.txt').
+    consult('University pl.txt').
     
 save_students :-
-    tell('C:/Users/alexandra/Desktop/University pl.txt'),
+    tell('University pl.txt'),
     listing(student),
     told.
 
