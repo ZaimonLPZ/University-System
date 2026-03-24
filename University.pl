@@ -1,10 +1,10 @@
 :- dynamic student/3.
 
 load_students :-
-    consult('University pl.txt').
+    consult('UniversityPL.txt').
     
 save_students :-
-    tell('University pl.txt'),
+    tell('UniversityPL.txt'),
     listing(student),
     told.
 
