@@ -1,23 +1,19 @@
 :- dynamic student/3.
 
-% ----------- CARGAR ARCHIVO -----------
 load_students :-
     consult('C:/Users/alexandra/Desktop/University pl.txt').
-
-% ----------- GUARDAR ARCHIVO -----------
+    
 save_students :-
     tell('C:/Users/alexandra/Desktop/University pl.txt'),
     listing(student),
     told.
 
-% ----------- CHECK IN -----------
 check_in :-
     write('ID: '), read(ID),
     write('Hora entrada: '), read(Entrada),
     assertz(student(ID, Entrada, 0)),
     save_students.
 
-% ----------- BUSCAR -----------
 search_student :-
     write('ID: '), read(ID),
     ( student(ID, E, S), S =:= 0 ->
@@ -26,7 +22,6 @@ search_student :-
         write('No esta dentro'), nl
     ).
 
-% ----------- CALCULAR TIEMPO -----------
 calculate_time :-
     write('ID: '), read(ID),
     ( student(ID, E, S), S =\= 0 ->
@@ -36,7 +31,6 @@ calculate_time :-
         write('No disponible'), nl
     ).
 
-% ----------- CHECK OUT -----------
 check_out :-
     write('ID: '), read(ID),
     write('Hora salida: '), read(Salida),
@@ -44,11 +38,9 @@ check_out :-
     assertz(student(ID, E, Salida)),
     save_students.
 
-% ----------- MOSTRAR TODOS -----------
 show_students :-
     listing(student).
 
-% ----------- MENU -----------
 menu :-
     nl,
     write('1 Registrar Ingreso'), nl,
@@ -68,7 +60,6 @@ ejecutar(5) :- check_out, menu.
 ejecutar(6) :- write('Pico y chao 😎'), nl.
 ejecutar(_) :- menu.
 
-% ----------- INICIO -----------
 start :-
     load_students,
     menu.
