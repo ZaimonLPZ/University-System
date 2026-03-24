@@ -23,6 +23,12 @@ showStudent :: Student -> String
 showStudent (Student i e s) =
     show i ++ " " ++ show e ++ " " ++ show s
 
+printStudent :: Student -> IO ()
+printStudent (Student i e s) =
+    putStrLn ("Estudiante " ++ show i ++
+              " Entro: " ++ show e ++
+              " Se abrio: " ++ show s)
+
 checkIn :: Int -> Int -> [Student] -> [Student]
 checkIn id time students =
     Student id time 0 : students
@@ -45,8 +51,8 @@ checkOut id time (Student i e s : xs)
 
 showStudents :: [Student] -> IO ()
 showStudents [] = return ()
-showStudents (Student i e s : xs) = do
-    putStrLn ("ID:" ++ show i ++ " Entry:" ++ show e ++ " Exit:" ++ show s)
+showStudents (s:xs) = do
+    printStudent s
     showStudents xs
 
 menu :: [Student] -> IO ()
