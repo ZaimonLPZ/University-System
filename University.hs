@@ -5,7 +5,7 @@ data Student = Student Int Int Int deriving (Show, Read)
 
 loadStudents :: IO [Student]
 loadStudents = do
-    content <- readFile "C:\\Users\\alexandra\\Desktop\\University.txt"
+    content <- readFile "University.txt"
     let ls = lines content
     let students= map readStudent ls
     length students `seq` return students
@@ -17,7 +17,7 @@ readStudent line =
 
 saveStudents :: [Student] -> IO ()
 saveStudents students =
-    writeFile "C:\\Users\\alexandra\\Desktop\\University.txt" (unlines (map showStudent students))
+    writeFile "University.txt" (unlines (map showStudent students))
 
 showStudent :: Student -> String
 showStudent (Student i e s) =
